@@ -109,8 +109,6 @@ export async function getStaticProps({ params: { slug } }) {
     `/api/products?populate=*&[filters][categories][slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=${maxResult}`
   );
 
-  console.log(category);
-
   return {
     props: {
       category,

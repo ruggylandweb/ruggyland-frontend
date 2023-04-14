@@ -10,9 +10,8 @@ export const cartSlice = createSlice({
       const item = state.cartItems.find((p) => p.id === action.payload.id);
       if (item) {
         item.quantity++;
-        console.log(item.quantity);
+
         item.attributes.price = item.oneQuantityPrice * item.quantity;
-        console.log(item.oneQuantiyPrice * item.quantity);
       } else {
         state.cartItems.push({ ...action.payload, quantity: 1 });
       }

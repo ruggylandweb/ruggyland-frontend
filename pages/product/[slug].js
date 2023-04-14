@@ -16,8 +16,7 @@ const ProductDetails = ({ product, products }) => {
   const [showError, setShowError] = useState(false);
   const dispatch = useDispatch();
   const p = product?.data?.[0]?.attributes;
-  // const p = product?.data?.[0]?.attributes;
-  console.log("Test1: " + product?.data?.[0]?.attributes.name);
+
   const notify = () => {
     toast.success("Success. Check your cart", {
       position: "bottom-right",
@@ -124,7 +123,6 @@ const ProductDetails = ({ product, products }) => {
                     behavior: "smooth",
                   });
                 } else {
-                  console.log("dispatch");
                   dispatch(
                     addToCart({
                       ...product?.data?.[0],
@@ -171,8 +169,6 @@ export async function getStaticPaths() {
     },
   }));
 
-  console.log(paths);
-
   return {
     paths,
     fallback: false,
@@ -187,8 +183,6 @@ export async function getStaticProps({ params: { slug } }) {
   const products = await fetchDataFromApi(
     `/api/products?populate=*&[filters][slug][$ne]=${slug}`
   );
-
-  console.log(product);
 
   return {
     props: {
